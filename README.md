@@ -1,2 +1,2 @@
 # Neural Network for MNIST
-trand, valid and test batches
+train, valid and test batches
