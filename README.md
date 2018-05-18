@@ -1,1 +1,2 @@
-# nNeural Network for MNIST
+# Neural Network for MNIST
+trand, valid and test batches
