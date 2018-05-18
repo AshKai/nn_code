@@ -4,10 +4,6 @@ import cPickle
 import tensorflow as tf
 import numpy as np
 
-import matplotlib
-
-matplotlib.use('Agg')
-
 import matplotlib.pyplot as plt
 
 # Translate a list of labels into an array of 0's and one 1.
@@ -95,9 +91,7 @@ while error_difference >= 0.001:
     valid_data_list.append(valid_data_error)
 
     error_difference = last_valid_data_error - valid_data_error
-    print "Epoch #:", epoch, "; Train error: ", train_data, "; Data error: ",\
-        valid_data_error, "; Data error prev: ", last_valid_data_error,\
-        "; Diferencia: ", error_difference
+    print "Epoch #:", epoch, "; Train error: ", train_data, "; Error difference: ", error_difference
 
 print "----------------------"
 print "   Test result...     "
@@ -111,12 +105,10 @@ for b, r in zip(test_y, test_data):
         error += 1
     total += 1
 fail = error / total * 100.0
-print "Porcentaje de error: ", fail,"% y portenjate de exito", (100.0 - fail), "%"
+print "Porcentaje de error: ", fail,"% y porcenjate de exito", (100.0 - fail), "%"
 
 plt.ylabel('Errores')
 plt.xlabel('Epocas')
-tr_handle, = plt.plot(train_data_list)
 vl_handle, = plt.plot(valid_data_list)
-plt.legend(handles=[tr_handle, vl_handle],
-            labels=['Error entrenamiento', 'Error validacion'])
+plt.legend(handles=[vl_handle], labels=['Error validacion'])
 plt.savefig('Grafica_mnist.png')
